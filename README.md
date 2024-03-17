@@ -1,11 +1,20 @@
-# MongoDB Docker Container
+# BotForge
+
+This repository consists of a Full-Stack application that handles Bot personality management.
+
+It is composed by three main parts, each using a different stack:
+- Database used is a containerized MongoDB image using Docker
+- Backend is implemented through several technologies such as NodeJS, Express & Mongoose
+- Frontend is implemented in React and bundled by Vite
+
+## MongoDB Docker Container
 
 This repository contains a Dockerfile to create a MongoDB container with the latest database and expose its default port.
 
-## Prerequisites
+### Prerequisites
 - Docker installed on your system. You can download and install Docker from [here](https://www.docker.com/get-started).
 
-## Usage
+### Usage
 1. Clone this repository to your local machine.
 
 2. Build the Docker image using the provided Dockerfile:
@@ -24,7 +33,7 @@ This repository contains a Dockerfile to create a MongoDB container with the lat
    - `-p 27017:27017` maps port 27017 on the host to port 27017 in the container.
    - `--name mongodb` assigns the name "mongodb" to the container.
 
-## Connecting to MongoDB
+### Connecting to MongoDB
 Once the MongoDB container is running, you can connect to it using your preferred MongoDB client or shell. Use the following connection string:
 
 ```bash
