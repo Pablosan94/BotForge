@@ -29,7 +29,7 @@ This repository contains a Dockerfile to create a MongoDB container with the lat
 3. Once the image is built successfully, you can run the MongoDB container using the following command:
 
    ```bash
-   docker run -d -p 27017:27017 --name turing_challenge_mongodb mongodb
+   docker run -d -p 27017:27017 --name botforge_mongodb mongodb
    ```
 
    - `-d` flag runs the container in detached mode.
@@ -61,7 +61,7 @@ There are a couple environment variables that need to be setup in order to prope
 ```
 PORT=3000
 DB_URL=mongodb://localhost/botforge
-SECRET=turing-challenge-secret-sauce
+SECRET=botforge-secret-sauce
 JWT_SECRET=tech-interview-jwt-secret-sauce
 ```
 

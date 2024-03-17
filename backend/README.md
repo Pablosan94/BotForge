@@ -15,7 +15,7 @@ There are a couple environment variables that need to be setup in order to prope
 ```
 PORT=3000
 DB_URL=mongodb://localhost/botforge
-SECRET=turing-challenge-secret-sauce
+SECRET=botforge-secret-sauce
 JWT_SECRET=tech-interview-jwt-secret-sauce
 ```
 
