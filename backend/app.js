@@ -23,7 +23,6 @@ app.get('/test', (req, res) => {
 
 app.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
-  console.log(DB_URL);
 
   try {
     await mongoose.connect(DB_URL);
