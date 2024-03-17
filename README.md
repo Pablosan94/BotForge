@@ -84,6 +84,10 @@ To seed the database, configure `DB_URL` to a valid MongoDB URL in the environme
 npm run seed
 ```
 
+### API Endpoints
+
+More information about the available endpoints can be found here in the [API documentation](https://documenter.getpostman.com/view/3864986/2sA2xnyA6Y).
+
 ## BotForge Frontend
 
 This project uses Vite as the build tool and React as the frontend library.
