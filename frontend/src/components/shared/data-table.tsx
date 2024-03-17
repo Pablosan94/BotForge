@@ -113,7 +113,7 @@ export function DataTable<TData, TValue>({
 
   const createMutation = useMutation(
     ({ body }: { body: Partial<Omit<Bot, '_id'>> }) => {
-      return fetch(`http://${process.env.API_URL}/bot`, {
+      return fetch(`${process.env.API_URL}/bot`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

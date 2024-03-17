@@ -62,14 +62,14 @@ const Header = () => {
     },
   });
   const registerMutation = useMutation((user: z.infer<typeof formSchema>) => {
-    return fetch(`http://${process.env.API_URL}/auth/register`, {
+    return fetch(`${process.env.API_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
     });
   });
   const loginMutation = useMutation((user: z.infer<typeof formSchema>) => {
-    return fetch(`http://${process.env.API_URL}/auth/login`, {
+    return fetch(`${process.env.API_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
@@ -146,6 +146,7 @@ const Header = () => {
   return (
     <header className="h-20 border-b border-neutral-300 flex items-center justify-between p-6 bg-neutral-200 text-sm">
       <Link
+        data-cy="nav-logo"
         className="hidden lg:block bg-neutral-200 w-12 h-12 rounded-full border-foreground border-[10px] hover:border-sky-400 transition-colors duration-300"
         to="/"
       ></Link>
@@ -153,44 +154,64 @@ const Header = () => {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0 hover:bg-neutral-200">
             <span className="sr-only">Open menu</span>
-            <Menu className="block lg:hidden" />
+            <Menu className="block lg:hidden" data-cy="nav-menu" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent align="start" data-cy="nav-menu-content">
           <DropdownMenuLabel>Navigation menu</DropdownMenuLabel>
           <DropdownMenuItem>
-            <Link to="#dashboard">Dashboard</Link>
+            <Link to="#dashboard" data-cy="nav-menu-dashboard">
+              Dashboard
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link to="/">Bot Management</Link>
+            <Link to="/" data-cy="nav-menu-bot-management">
+              Bot Management
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link to="#analytics">Analytics</Link>
+            <Link to="#analytics" data-cy="nav-menu-analytics">
+              Analytics
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link to="#user-management">User management</Link>
+            <Link to="#user-management" data-cy="nav-menu-user-management">
+              User management
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Link to="#settings">Settings</Link>
+            <Link to="#settings" data-cy="nav-menu-settings">
+              Settings
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <nav>
         <ul className="flex items-center gap-x-4 md:gap-x-6">
           <li className="hidden lg:block hover:cursor-pointer hover:opacity-75">
-            <Link to="#dashboard">Dashboard</Link>
+            <Link to="#dashboard" data-cy="nav-dashboard">
+              Dashboard
+            </Link>
           </li>
           <li className="hidden lg:block hover:cursor-pointer hover:opacity-75">
-            <Link to="/">Bot Management</Link>
+            <Link to="/" data-cy="nav-bot-management">
+              Bot Management
+            </Link>
           </li>
           <li className="hidden lg:block hover:cursor-pointer hover:opacity-75">
-            <Link to="#analytics">Analytics</Link>
+            <Link to="#analytics" data-cy="nav-analytics">
+              Analytics
+            </Link>
           </li>
           <li className="hidden lg:block hover:cursor-pointer hover:opacity-75">
-            <Link to="#user-management">User management</Link>
+            <Link to="#user-management" data-cy="nav-user-management">
+              User management
+            </Link>
           </li>
           <li className="hidden lg:block hover:cursor-pointer hover:opacity-75">
-            <Link to="#settings">Settings</Link>
+            <Link to="#settings" data-cy="nav-settings">
+              Settings
+            </Link>
           </li>
           <Separator className="hidden lg:block h-8" orientation="vertical" />
           {!token && (
@@ -258,7 +279,7 @@ const Header = () => {
             <Dialog open={loginOpen} onOpenChange={setLoginOpen}>
               <DialogTrigger asChild>
                 <li>
-                  <Button variant="link" className="p-0">
+                  <Button variant="link" className="p-0" data-cy="login">
                     Login
                   </Button>
                 </li>
@@ -275,7 +296,11 @@ const Header = () => {
                       <FormItem id="username">
                         <FormLabel>Username</FormLabel>
                         <FormControl>
-                          <Input placeholder="turing" {...field} />
+                          <Input
+                            placeholder="turing"
+                            {...field}
+                            data-cy="login-username"
+                          />
                         </FormControl>
                         <FormDescription />
                         <FormMessage />
@@ -293,6 +318,7 @@ const Header = () => {
                             placeholder="Secret12"
                             type="password"
                             {...field}
+                            data-cy="login-password"
                           />
                         </FormControl>
                         <FormDescription />
@@ -301,7 +327,10 @@ const Header = () => {
                     )}
                   />
                   <DialogFooter>
-                    <Button onClick={loginForm.handleSubmit(handleLogin)}>
+                    <Button
+                      onClick={loginForm.handleSubmit(handleLogin)}
+                      data-cy="login-submit"
+                    >
                       Login
                     </Button>
                   </DialogFooter>
@@ -311,7 +340,12 @@ const Header = () => {
           )}
           {token && (
             <li>
-              <Button variant="link" className="p-0" onClick={handleLogout}>
+              <Button
+                variant="link"
+                className="p-0"
+                onClick={handleLogout}
+                data-cy="logout"
+              >
                 Logout
               </Button>
             </li>

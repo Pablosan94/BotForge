@@ -177,7 +177,7 @@ export const columns: ColumnDef<Bot>[] = [
 
       const updateMutation = useMutation(
         ({ body, id }: { body: Partial<Omit<Bot, '_id'>>; id: string }) => {
-          return fetch(`http://${process.env.API_URL}/bot/${id}`, {
+          return fetch(`${process.env.API_URL}/bot/${id}`, {
             method: 'PUT',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -189,7 +189,7 @@ export const columns: ColumnDef<Bot>[] = [
       );
 
       const deleteMutation = useMutation((id: string) => {
-        return fetch(`http://${process.env.API_URL}/bot/${id}`, {
+        return fetch(`${process.env.API_URL}/bot/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`,

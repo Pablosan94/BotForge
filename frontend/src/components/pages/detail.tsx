@@ -37,7 +37,7 @@ type Params = {
 
 export async function loader({ params }: { params: Params }) {
   const bot: Bot = await (
-    await fetch(`http://${process.env.API_URL}/bot/${params.id}`)
+    await fetch(`${process.env.API_URL}/bot/${params.id}`)
   ).json();
   return bot;
 }
@@ -48,7 +48,7 @@ const DetailPage = () => {
     queryKey: 'details',
     queryFn: async () =>
       await (
-        await fetch(`http://${process.env.API_URL}/bot/${bot._id}`)
+        await fetch(`${process.env.API_URL}/bot/${bot._id}`)
       ).json(),
     refetchOnWindowFocus: false,
   });
@@ -74,7 +74,7 @@ const DetailPage = () => {
 
   const updateMutation = useMutation(
     ({ body, id }: { body: Partial<Omit<Bot, '_id'>>; id: string }) => {
-      return fetch(`http://${process.env.API_URL}/bot/${id}`, {
+      return fetch(`${process.env.API_URL}/bot/${id}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -86,7 +86,7 @@ const DetailPage = () => {
   );
 
   const deleteMutation = useMutation((id: string) => {
-    return fetch(`http://${process.env.API_URL}/bot/${id}`, {
+    return fetch(`${process.env.API_URL}/bot/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

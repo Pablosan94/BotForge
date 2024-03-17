@@ -9,7 +9,7 @@ const TablePage = () => {
   const { data, isFetching } = useQuery<Bot[]>({
     queryKey: 'bots',
     queryFn: async () =>
-      await (await fetch(`http://${process.env.API_URL}/bot`)).json(),
+      await (await fetch(`${process.env.API_URL}/bot`)).json(),
     refetchOnWindowFocus: false,
   });
 
