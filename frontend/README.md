@@ -13,7 +13,7 @@ npm install
 There's an importnat environment variable that needs to be setup in order to properly run the application. Here is an example of a working configuration:
 
 ```
-API_URL=localhost:3000
+API_URL=http://localhost:3000
 ```
 
 ## Usage
