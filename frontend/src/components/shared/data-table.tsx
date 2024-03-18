@@ -36,7 +36,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../ui/dialog';
+} from '@/components/ui/dialog';
 import {
   Form,
   FormControl,
@@ -45,17 +45,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { Input } from '../ui/input';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
-import { Textarea } from '../ui/textarea';
-import { useToast } from '../ui/use-toast';
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -171,7 +171,7 @@ export function DataTable<TData, TValue>({
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button>
+            <Button disabled={!token} data-cy="create-bot">
               <PlusCircle className="w-4 h-4 mr-2" /> Create
             </Button>
           </DialogTrigger>
@@ -187,7 +187,7 @@ export function DataTable<TData, TValue>({
                   <FormItem id="name">
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} data-cy="create-bot-name" />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
@@ -201,7 +201,7 @@ export function DataTable<TData, TValue>({
                   <FormItem id="description">
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Textarea {...field} />
+                      <Textarea {...field} data-cy="create-bot-description" />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
@@ -215,7 +215,7 @@ export function DataTable<TData, TValue>({
                   <FormItem id="basePersonality">
                     <FormLabel>Base</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} data-cy="create-bot-base-personality" />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
@@ -229,7 +229,7 @@ export function DataTable<TData, TValue>({
                   <FormItem id="personalityTraits">
                     <FormLabel>Traits</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} data-cy="create-bot-personality-traits" />
                     </FormControl>
                     <FormDescription>
                       <span className="flex gap-1 items-center text-xs text-neutral-900/60">
@@ -248,7 +248,7 @@ export function DataTable<TData, TValue>({
                     <FormItem id="useCaseTemplate">
                       <FormLabel>Use Case Template</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="create-bot-use-case-template" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -267,7 +267,7 @@ export function DataTable<TData, TValue>({
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Status" />
+                          <SelectValue placeholder="Status" data-cy="create-bot-status" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -282,7 +282,7 @@ export function DataTable<TData, TValue>({
                 )}
               />
               <DialogFooter>
-                <Button onClick={form.handleSubmit(handleCreate)}>
+                <Button onClick={form.handleSubmit(handleCreate)} data-cy="create-bot-submit">
                   Submit
                 </Button>
               </DialogFooter>

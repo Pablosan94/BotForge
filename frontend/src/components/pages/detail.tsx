@@ -1,5 +1,15 @@
+import { useAuthContext } from '@/contexts/AuthContext';
+import { botFormSchema } from '@/lib/form';
 import { Bot } from '@/lib/types';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Info } from 'lucide-react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { z } from 'zod';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -8,28 +18,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { useState } from 'react';
-import { Label } from '../ui/label';
-import { botFormSchema } from '@/lib/form';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
-import { Info } from 'lucide-react';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
-import { useAuthContext } from '@/contexts/AuthContext';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { useToast } from '../ui/use-toast';
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 type Params = {
   id: string;
@@ -47,9 +47,7 @@ const DetailPage = () => {
   const { data, isFetching } = useQuery<Bot>({
     queryKey: 'details',
     queryFn: async () =>
-      await (
-        await fetch(`${process.env.API_URL}/bot/${bot._id}`)
-      ).json(),
+      await (await fetch(`${process.env.API_URL}/bot/${bot._id}`)).json(),
     refetchOnWindowFocus: false,
   });
 
@@ -174,7 +172,7 @@ const DetailPage = () => {
                     <FormItem id="name">
                       <FormLabel className="text-lg">Name</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="details-name" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -198,7 +196,7 @@ const DetailPage = () => {
                     <FormItem id="description">
                       <FormLabel className="text-lg">Description</FormLabel>
                       <FormControl>
-                        <Textarea {...field} />
+                        <Textarea {...field} data-cy="details-description" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -222,7 +220,7 @@ const DetailPage = () => {
                     <FormItem id="basePersonality">
                       <FormLabel className="text-lg">Base</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="details-base-personality" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -255,7 +253,10 @@ const DetailPage = () => {
                     <FormItem id="personalityTraits" className="mb-2">
                       <FormLabel className="text-lg">Traits</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input
+                          {...field}
+                          data-cy="details-personality-traits"
+                        />
                       </FormControl>
                       {isEditing && (
                         <FormDescription>
@@ -289,7 +290,7 @@ const DetailPage = () => {
                         Use Case Template
                       </FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="details-use-case-template" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -322,7 +323,10 @@ const DetailPage = () => {
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Status" />
+                          <SelectValue
+                            placeholder="Status"
+                            data-cy="details-status"
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>

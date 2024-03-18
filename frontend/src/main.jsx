@@ -1,13 +1,13 @@
+import DetailPage, { loader as detailLoader } from '@/components/pages/detail';
+import TablePage from '@/components/pages/table';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from 'react-query';
-import TablePage from '@/components/pages/table';
-import DetailPage, { loader as detailLoader } from '@/components/pages/detail';
+import App from './App.jsx';
 import AuthContextProvider from './contexts/AuthContext';
 import TableContextProvider from './contexts/TableContext';
+import './index.css';
 
 const queryClient = new QueryClient();
 

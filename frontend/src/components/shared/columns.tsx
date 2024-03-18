@@ -28,7 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../ui/dialog';
+} from '@/components/ui/dialog';
 import {
   Form,
   FormControl,
@@ -37,17 +37,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { Input } from '../ui/input';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
-import { Textarea } from '../ui/textarea';
-import { useToast } from '../ui/use-toast';
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 export const columns: ColumnDef<Bot>[] = [
   /* {
@@ -266,6 +266,7 @@ export const columns: ColumnDef<Bot>[] = [
                 variant="ghost"
                 className="h-8 w-8 p-0 hover:bg-neutral-200"
                 disabled={!token}
+                data-cy={`table-actions[${row.index}]`}
               >
                 <span className="sr-only">Open menu</span>
                 <MoreHorizontal className="h-4 w-4" />
@@ -281,6 +282,7 @@ export const columns: ColumnDef<Bot>[] = [
                   setSelectedRowAction('edit');
                   setEditOpen(true);
                 }}
+                data-cy={`table-actions-edit[${row.index}]`}
               >
                 Edit
               </DropdownMenuItem>
@@ -293,6 +295,7 @@ export const columns: ColumnDef<Bot>[] = [
                   setSelectedRowAction('delete');
                   setDeleteOpen(true);
                 }}
+                data-cy={`table-actions-delete[${row.index}]`}
               >
                 Delete
               </DropdownMenuItem>
@@ -317,7 +320,7 @@ export const columns: ColumnDef<Bot>[] = [
                     <FormItem id="name">
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="edit-bot-name" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -331,7 +334,7 @@ export const columns: ColumnDef<Bot>[] = [
                     <FormItem id="description">
                       <FormLabel>Description</FormLabel>
                       <FormControl>
-                        <Textarea {...field} />
+                        <Textarea {...field} data-cy="edit-bot-description" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -345,7 +348,7 @@ export const columns: ColumnDef<Bot>[] = [
                     <FormItem id="basePersonality">
                       <FormLabel>Base</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input {...field} data-cy="edit-bot-base-personality" />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -359,7 +362,10 @@ export const columns: ColumnDef<Bot>[] = [
                     <FormItem id="personalityTraits">
                       <FormLabel>Traits</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input
+                          {...field}
+                          data-cy="edit-bot-personality-traits"
+                        />
                       </FormControl>
                       <FormDescription>
                         <span className="flex gap-1 items-center text-xs text-neutral-900/60">
@@ -378,7 +384,10 @@ export const columns: ColumnDef<Bot>[] = [
                     <FormItem id="useCaseTemplate">
                       <FormLabel>Use Case Template</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input
+                          {...field}
+                          data-cy="edit-bot-use-case-template"
+                        />
                       </FormControl>
                       <FormDescription />
                       <FormMessage />
@@ -397,7 +406,10 @@ export const columns: ColumnDef<Bot>[] = [
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Status" />
+                            <SelectValue
+                              placeholder="Status"
+                              data-cy="edit-bot-status"
+                            />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>

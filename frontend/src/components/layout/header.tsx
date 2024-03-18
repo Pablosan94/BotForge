@@ -1,12 +1,11 @@
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from '@/components/ui/dialog';
 import {
   Form,
@@ -24,17 +23,17 @@ import { Info, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { z } from 'zod';
-import { Separator } from '../ui/separator';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
-import { useToast } from '../ui/use-toast';
+} from '@/components/ui/dropdown-menu';
+import { Separator } from '@/components/ui/separator';
+import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   username: z.string(),
@@ -77,31 +76,33 @@ const Header = () => {
   });
   const { toast } = useToast();
   const { token, setToken } = useAuthContext();
-  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
       await registerMutation.mutate(registerForm.getValues(), {
-        onSuccess: async (data) => {
-          const { token } = await data.json();
-          if (token) {
-            localStorage.setItem('token', token);
-            setToken(token);
-            setRegisterOpen(false);
+        onSuccess: async (response) => {
+          if (response.ok) {
+            const { token } = await response.json();
+            if (token) {
+              localStorage.setItem('token', token);
+              setToken(token);
+              setRegisterOpen(false);
+              toast({
+                title: 'Registered successfully!',
+                description: 'You are now logged in.',
+                variant: 'success',
+              });
+            }
+          } else {
             toast({
-              title: 'Registered successfully!',
-              description: 'You are now logged in.',
-              variant: 'success',
+              title: 'Something went wrong!',
+              description: 'That username might already be taken.',
+              variant: 'destructive',
             });
           }
         },
       });
     } catch (err) {
-      toast({
-        title: 'Something went wrong!',
-        description: 'Please try again later.',
-        variant: 'destructive',
-      });
       console.log(err);
     }
   };
@@ -109,26 +110,29 @@ const Header = () => {
   const handleLogin = async () => {
     try {
       await loginMutation.mutate(loginForm.getValues(), {
-        onSuccess: async (data) => {
-          const { token } = await data.json();
-          if (token) {
-            localStorage.setItem('token', token);
-            setToken(token);
-            setLoginOpen(false);
+        onSuccess: async (response) => {
+          if (response.ok) {
+            const { token } = await response.json();
+            if (token) {
+              localStorage.setItem('token', token);
+              setToken(token);
+              setLoginOpen(false);
+              toast({
+                title: 'Logged in successfully!',
+                description: 'You are now logged in.',
+                variant: 'success',
+              });
+            }
+          } else {
             toast({
-              title: 'Logged in successfully!',
-              description: 'You are now logged in.',
-              variant: 'success',
+              title: 'Something went wrong!',
+              description: 'Please try again later.',
+              variant: 'destructive',
             });
           }
         },
       });
     } catch (err) {
-      toast({
-        title: 'Something went wrong!',
-        description: 'Please try again later.',
-        variant: 'destructive',
-      });
       console.log(err);
     }
   };
@@ -152,9 +156,12 @@ const Header = () => {
       ></Link>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0 hover:bg-neutral-200">
+          <Button
+            variant="ghost"
+            className="block lg:hidden h-8 w-8 p-0 hover:bg-neutral-200"
+          >
             <span className="sr-only">Open menu</span>
-            <Menu className="block lg:hidden" data-cy="nav-menu" />
+            <Menu data-cy="nav-menu" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" data-cy="nav-menu-content">

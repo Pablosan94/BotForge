@@ -47,12 +47,7 @@ describe('navigation bar', () => {
 
     it('logs out successfully', () => {
       cy.visit('/');
-      cy.get('[data-cy="login"]').as('login');
-      cy.get('@login').should('be.visible');
-      cy.get('@login').click();
-      cy.get('[data-cy="login-username"]').type('Pablo');
-      cy.get('[data-cy="login-password"]').type('Secret12');
-      cy.get('[data-cy="login-submit"]').click();
+      cy.login();
       cy.get('@login').should('not.exist');
       cy.get('[data-cy="logout"]').click();
       cy.get('@login').should('be.visible');
