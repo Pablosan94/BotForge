@@ -424,7 +424,7 @@ export const columns: ColumnDef<Bot>[] = [
                   )}
                 />
                 <DialogFooter>
-                  <Button onClick={form.handleSubmit(handleEdit)}>
+                  <Button onClick={form.handleSubmit(handleEdit)} data-cy="edit-bot-submit">
                     Submit
                   </Button>
                 </DialogFooter>
@@ -447,10 +447,10 @@ export const columns: ColumnDef<Bot>[] = [
                 permanently delete this element?
               </DialogDescription>
               <DialogFooter>
-                <Button variant="outline" onClick={() => setDeleteOpen(false)}>
+                <Button variant="outline" onClick={() => setDeleteOpen(false)} data-cy="delete-bot-cancel">
                   Cancel
                 </Button>
-                <Button variant="destructive" onClick={() => handleDelete()}>
+                <Button variant="destructive" onClick={() => handleDelete()} data-cy="delete-bot-submit">
                   <Trash2 className="mr-2 h-4 w-4" />
                   Delete permanently
                 </Button>

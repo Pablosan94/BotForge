@@ -1,0 +1,126 @@
+{
+  "bots": [
+    {
+      "name": "Leonardo",
+      "description": "Excels at creative and imaginative thinking.",
+      "basePersonality": "inventive",
+      "personalityTraits": ["enthusiastic", "formal", "happy", "funny"],
+      "useCaseTemplate": "Art creation assistant",
+      "status": "inactive"
+    },
+    {
+      "name": "Leonardo-1.5",
+      "description": "Now excels EVEN MORE at creative and imaginative thinking.",
+      "basePersonality": "inventive",
+      "personalityTraits": ["enthusiastic", "formal", "happy", "funny"],
+      "useCaseTemplate": "Art creation assistant",
+      "status": "active"
+    },
+    {
+      "name": "Shook-a-speare",
+      "description": "Plays and poems seem to be its specialty.",
+      "basePersonality": "poetical",
+      "personalityTraits": [
+        "eloquent",
+        "introspective",
+        "melancholic",
+        "perceptive"
+      ],
+      "useCaseTemplate": "Playwrighting",
+      "status": "inactive"
+    },
+    {
+      "name": "Amadeus",
+      "description": "Ask for any music related queries.",
+      "basePersonality": "creative",
+      "personalityTraits": [
+        "prodigious",
+        "expressive",
+        "whimsical",
+        "passionate"
+      ],
+      "useCaseTemplate": "Composition Advisor",
+      "status": "preview"
+    },
+    {
+      "name": "Dal-I",
+      "description": "Any familiarity with Dall-E is pure coincidence. If surrealist imagery is your jam, try it out!",
+      "basePersonality": "eccentric",
+      "personalityTraits": [
+        "surreal",
+        "eccentric",
+        "provocative",
+        "imaginative"
+      ],
+      "useCaseTemplate": "Art Designer",
+      "status": "inactive"
+    },
+    {
+      "name": "AIsten",
+      "description": "Possesses great insights to discuss about 19th century human nature and society.",
+      "basePersonality": "observant",
+      "personalityTraits": [
+        "sharp-witted",
+        "insightful",
+        "compassionate",
+        "imaginative"
+      ],
+      "useCaseTemplate": "Psychological Assistant",
+      "status": "active"
+    },
+    {
+      "name": "CurrentlyTouring",
+      "description": "The model that sparked a new era of artificial intelligence. Limited but powerful!",
+      "basePersonality": "analytical",
+      "personalityTraits": ["brilliant", "innovative", "persistent", "curious"],
+      "useCaseTemplate": "General Assistant",
+      "status": "active"
+    },
+    {
+      "name": "Humblemore",
+      "description": "A magical entity indeed.",
+      "basePersonality": "mystical",
+      "personalityTraits": ["brilliant", "mysterious", "humble", "inquisitive"],
+      "useCaseTemplate": "Customer Support",
+      "status": "preview"
+    },
+    {
+      "name": "Lavand",
+      "description": "Will amaze you with his single handed expertise on a vast array of topics.",
+      "basePersonality": "innovative",
+      "personalityTraits": ["tranquil", "creative", "insightful", "persistent"],
+      "useCaseTemplate": "Customer Support",
+      "status": "active"
+    },
+    {
+      "name": "Casso",
+      "description": "Can generate wondrous childlike images.",
+      "basePersonality": "childlike",
+      "personalityTraits": ["brilliant", "creative", "insightful", "observant"],
+      "useCaseTemplate": "Art Generation",
+      "status": "preview"
+    },
+    {
+      "name": "Bunnai",
+      "description": "This model will provide you with all your party music needs.",
+      "basePersonality": "funny",
+      "personalityTraits": ["repetitive", "expressive", "innovative", "merry"],
+      "useCaseTemplate": "Music Templating",
+      "status": "preview"
+    }
+  ],
+  "users": [
+    {
+      "username": "turing",
+      "password": "ImTur1ng"
+    },
+    {
+      "username": "test",
+      "password": "Abcd1234"
+    },
+    {
+      "username": "Pablo",
+      "password": "Secret12"
+    }
+  ]
+}

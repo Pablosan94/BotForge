@@ -32,3 +32,11 @@ Cypress.Commands.add('login', () => {
   cy.get('[data-cy="login-password"]').type('Secret12');
   cy.get('[data-cy="login-submit"]').click();
 });
+
+Cypress.Commands.add('clear_db', () => {
+  cy.task('clearDB');
+});
+
+Cypress.Commands.add('seed_db', () => {
+  cy.task('seedDB');
+});
